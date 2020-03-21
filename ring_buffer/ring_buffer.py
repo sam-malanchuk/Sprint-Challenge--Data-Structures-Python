@@ -17,6 +17,12 @@ class RingBuffer:
                 curr_node = curr_node.next
         if self.storage.length < 3:
             self.storage.add_to_tail((item, 0))
+        if self.storage.length == 3:
+            curr_node = self.storage.head
+            while curr_node is not None:
+                if curr_node.value[1] == 3:
+                    curr_node.value = (item, 0)
+                curr_node = curr_node.next
 
         print(self.storage)
         pass
@@ -34,6 +40,8 @@ myRing.append("a")
 myRing.append("b")
 myRing.append("c")
 myRing.append("d")
+myRing.append("e")
+myRing.append("f")
 
 
 
