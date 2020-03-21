@@ -29,13 +29,23 @@ class RingBuffer:
         # Note:  This is the only [] allowed
         list_buffer_contents = []
 
-        # TODO: Your code here
         curr_node = self.storage.head
         while curr_node is not None:
             list_buffer_contents.append(curr_node.value[0])
             curr_node = curr_node.next
+        # TODO: Your code here
 
         return list_buffer_contents
+
+myRing = RingBuffer(5)
+myRing.append("a")
+myRing.append("b")
+myRing.append("c")
+myRing.append("d")
+myRing.append("e")
+myRing.append("f")
+
+print(myRing.get())
 
 # Understand
 # Create a class that will accept a capacity parameter, then accept the append of
