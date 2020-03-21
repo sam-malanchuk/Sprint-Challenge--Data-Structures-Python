@@ -20,6 +20,18 @@ class LinkedList:
     # reference to the head of the list
     self.head = None
 
+  def __str__(self):
+    if self.head is None:
+        return "empty"
+    curr_node = self.head
+    # "(3) <-> (5) <-> ..."
+    output = ""
+    output += f'({curr_node.value})'
+    while curr_node.next_node is not None:
+        curr_node = curr_node.next_node
+        output += f' <-> ({curr_node.value})'
+    return output
+
   def add_to_head(self, value):
     node = Node(value)
     if self.head is not None:
@@ -44,4 +56,32 @@ class LinkedList:
 
   def reverse_list(self):
     # TO BE COMPLETED
+    curr_node = self.head
+    if curr_node is not None:
+      hold_next = self.head.next_node
+    while curr_node is not None:
+      curr_node.next_node = None
+      curr_node = hold_next
+      if curr_node is not None:
+        hold_next = hold_next.next_node
+        self.add_to_head(curr_node.value)
     pass
+
+# myList = LinkedList()
+# myList.add_to_head(1)
+# myList.add_to_head(2)
+# myList.add_to_head(3)
+# myList.add_to_head(4)
+# myList.add_to_head(5)
+# print(myList)
+
+# myList.reverse_list()
+
+# print(myList)
+
+# Understand:
+# Get a single linked list and reverse it
+# (1)->(2)->(3)->None would then become (3)->(2)->(1)->None
+
+# Plan:
+# delete and move to head each item going next untill you reach none.
